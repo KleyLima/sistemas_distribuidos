@@ -16,7 +16,7 @@ class OmdbBroker:
         :return: JSON com as infos do Filme
         """
         
-        data = requests.get(url + "&t=" + nomefilme)
+        response = requests.get(url + "&s=" + nome_filme)
 
         if response.status_code == 200:
             content = response.json()
