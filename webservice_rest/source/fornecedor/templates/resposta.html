@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='pt'>
+	<head>
+		<meta charset="UTF-8">
+		<title>Home Page</title>
+		<div class = "backg">
+			<link rel="stylesheet" href="/templates/style.css">
+		</div>
+	</head>
+	<body>
+		<h1>
+        	Sinfo Movies
+		</h1><br>
+
+		<h2>
+		Qual o filme de Hoje?
+		</h2><br><br>
+
+		<form enctype="application/x-www-form-urlencoded" action="http://localhost:5000/busca_filmes" method = "POST">
+  			<input name='search_by' placeholder="Digite o filme a ser buscado">
+  			<button>Consultar</button>
+		</form>
+
+		<dl>
+			{% if filmes %}
+				{% for filme in filmes %}
+						<h3>{{filme.Title|e}}</h3><br>
+				{% endfor %}
+			{% else %}
+				<h3>Que pena, filme não encontrado ;(</h3><br>
+			{% endif %}
+		</dl>
+
+	</body>
+</html>
