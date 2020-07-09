@@ -50,7 +50,7 @@ class Moedas:
         cls.pretty = [f"{qtd} Moedas de R${coin}" if qtd > 1 else f"{qtd} Moeda de R${coin}" for coin, qtd in cls.lst]
 
     @classmethod
-    def make_it_happen(cls, vlr):
+    def quantas(cls, vlr):
         cls.vlr = float(vlr)
         cls.valor_moedas()
         cls.formater()       

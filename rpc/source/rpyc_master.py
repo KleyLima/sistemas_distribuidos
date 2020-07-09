@@ -31,7 +31,7 @@ def leitura_valores():
     """
     Realiza a leitura de valores do stdin e os retorna em uma lista.
     """
-    return [int(x) for x in input().split()]
+    return [int(x) for x in input('Insira a lista de valores: ').split()]
 
 def realiza_imports(conn):
     """
