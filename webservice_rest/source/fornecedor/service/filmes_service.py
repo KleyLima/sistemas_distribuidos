@@ -16,6 +16,12 @@ class FilmesService:
         films = OmdbBusiness.busca_detalhada(from_api=films)
         return films
 
+    @classmethod
+    def busca_one(cls, search):
+        filmes = OmdbBusiness.busca_one(search_by=search)
+        return filmes
 
 if __name__ == '__main__':
-    na = FilmesService.busca_varios('Star Wars')
+
+    na = FilmesService()
+    print(na.busca_one('Frozen'))

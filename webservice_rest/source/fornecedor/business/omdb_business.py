@@ -17,5 +17,11 @@ class OmdbBusiness:
         return busca.response
 
     @classmethod
+    def busca_one(cls, search_by, mode='t'):
+        busca= OmdbBroker(search_by=search_by, mode=mode)
+        busca.get_infos()
+        return busca.response
+
+    @classmethod
     def busca_detalhada(cls, from_api):
         return [OmdbBusiness.search(search_by=filme.get('Title'), unit=True) for filme in from_api]
