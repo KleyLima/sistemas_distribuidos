@@ -3,23 +3,28 @@
 import requests
 
 
-class OmdbBroker:
-    
+class OmdbBroker(object):
+    url = "http://www.omdbapi.com/?apikey=7de8e4e9"
 
+    def __init__(self, search_by, mode='s'):
+        self.mode = mode
+        self.response = None
+        self.search_by = search_by
 
-    @classmethod
-    def get_infos(cls, nome_filme):
+    def get_infos(self):
         """
         Busca pelo titulo do filme na API
-
-        :param nome_filme: Nome do filme a ser buscado
         :return: JSON com as infos do Filme
         """
-        
-        response = requests.get(url + "&s=" + nome_filme)
+
+        response = requests.get(self.__class__.url + f"&{self.mode}=" + self.search_by)
 
         if response.status_code == 200:
             content = response.json()
 
-            # TODO: Keep data fetching
+            self.response = content
 
+    def unwrap(self):
+        if self.response and self.response.get('Response') == 'True':
+            if self.mode == 's':
+                self.response = self.response.get('Search')
