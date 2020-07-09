@@ -15,12 +15,22 @@ def home():
 
 
 @app.route('/busca_filmes', methods=['POST'])
-def test():
-    na = dict(request.form)
-    print(na)
-    no = FilmesService.busca_varios(**na)
+def busca_varios():
+    searched = dict(request.form)
+    print(searched)
+    no = FilmesService.busca_varios(**searched)
+    print(no)
 
     return render_template('resposta.html', filmes=no)
+
+@app.route('/busca_unitario', methods=['POST'])
+def busca_one():
+    searched = dict(request.form)
+    print(searched)
+    no = FilmesService.busca_one(**searched)
+    print(no)
+
+    return render_template('unitario.html', filmes=no)
 
 
 app.run(debug=True)
