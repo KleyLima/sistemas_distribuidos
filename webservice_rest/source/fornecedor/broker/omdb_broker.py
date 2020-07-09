@@ -28,3 +28,5 @@ class OmdbBroker(object):
         if self.response and self.response.get('Response') == 'True':
             if self.mode == 's':
                 self.response = self.response.get('Search')
+        elif self.response and self.response.get('Response') == 'False':
+            self.response = None

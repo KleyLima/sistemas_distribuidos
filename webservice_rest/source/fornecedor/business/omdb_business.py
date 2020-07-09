@@ -24,4 +24,4 @@ class OmdbBusiness:
 
     @classmethod
     def busca_detalhada(cls, from_api):
-        return [OmdbBusiness.search(search_by=filme.get('Title'), unit=True) for filme in from_api]
+        return [OmdbBusiness.search(search_by=film.get('Title'), unit=True) for film in from_api] if from_api else None
